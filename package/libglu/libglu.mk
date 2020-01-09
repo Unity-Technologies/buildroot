@@ -13,3 +13,5 @@ LIBGLU_INSTALL_STAGING = YES
 LIBGLU_DEPENDENCIES = libgl host-pkgconf
 
 $(eval $(autotools-package))
+
+LIBGLU_CONF_OPTS += --with-pic
