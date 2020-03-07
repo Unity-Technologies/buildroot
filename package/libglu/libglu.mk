@@ -14,4 +14,5 @@ LIBGLU_DEPENDENCIES = libgl host-pkgconf
 
 $(eval $(autotools-package))
 
+LIBGLU_CONF_OPTS += --enable-static
 LIBGLU_CONF_OPTS += --with-pic
