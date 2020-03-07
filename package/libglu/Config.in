@@ -1,3 +1,6 @@
+comment "libglu needs an OpenGL backend"
+	depends on !BR2_PACKAGE_HAS_LIBGL
+
 config BR2_PACKAGE_LIBGLU
 	bool "libglu"
 	depends on BR2_PACKAGE_HAS_LIBGL
@@ -6,5 +9,11 @@ config BR2_PACKAGE_LIBGLU
 
 	  http://cgit.freedesktop.org/mesa/glu/
 
-comment "libglu needs an OpenGL backend"
-	depends on !BR2_PACKAGE_HAS_LIBGL
+if BR2_PACKAGE_LIBGLU
+
+config UNITY3D_PACKAGE_LIBGLU_STATIC_PIC
+	bool "(Unity3D) Compile static library with PIC"
+	help
+      Always compile a libGLU.a, and force PIC.
+
+endif
