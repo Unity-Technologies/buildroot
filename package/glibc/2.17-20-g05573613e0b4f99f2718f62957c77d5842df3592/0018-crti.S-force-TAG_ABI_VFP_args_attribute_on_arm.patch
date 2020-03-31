@@ -4,7 +4,7 @@
  #include <libc-symbols.h>
  #include <sysdep.h>
  
-+#ifdef __arm__
++#if defined __arm__ && defined HAVE_ARM_PCS_VFP
 +// Force the Tag_ABI_VFP_args build attribute to hard.
 +// This was previously missing in shared libraries created with clang's lld linker.
 +// http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.100068_0607_00_en/zea1485538620282.html
