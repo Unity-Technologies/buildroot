@@ -1,0 +1,16 @@
+--- a/ports/sysdeps/arm/crti.S	2014-06-04 01:43:08.000000000 +0200
++++ b/ports/sysdeps/arm/crti.S	2020-03-20 18:28:29.096747744 +0100
+@@ -41,6 +41,13 @@
+ #include <libc-symbols.h>
+ #include <sysdep.h>
+ 
++#if defined __arm__ && defined HAVE_ARM_PCS_VFP
++// Force the Tag_ABI_VFP_args build attribute to hard.
++// This was previously missing in shared libraries created with clang's lld linker.
++// http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.100068_0607_00_en/zea1485538620282.html
++.eabi_attribute Tag_ABI_VFP_args, 1
++#endif
++
+ #ifndef PREINIT_FUNCTION
+ # define PREINIT_FUNCTION __gmon_start__
+ #endif
